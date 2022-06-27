@@ -1,0 +1,15 @@
+[
+    {
+        "id": "9b539393-1d68-4ebb-b8ec-304e31075399",
+        "categoryId": "ebf74eb9-7fe3-48ad-a373-f5124074f808",
+        "partno": "HS-2451",
+        "name": "ML Headset",
+        "abstract": "The product called 'ML Headset'",
+        "price": 301.99,
+        "tagIds": [
+            "ba09f333-7616-45c5-8b90-882c6e776ec5",
+            "29d758fb-ffe0-4ae2-b4d7-fe0e3967f15f",
+            "2907c8c8-e41e-45c4-b999-c7d248d184b9"
+        ]
+    }
+]

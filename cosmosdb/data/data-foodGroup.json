@@ -1,0 +1,58 @@
+{
+    "id": "03226",
+    "description": "Babyfood, dessert, fruit pudding, orange, strained",
+    "tags": [
+        {
+            "name": "babyfood"
+        },
+        {
+            "name": "dessert"
+        },
+        {
+            "name": "fruit pudding"
+        },
+        {
+            "name": "orange"
+        },
+        {
+            "name": "babyfood"
+        },
+        {
+            "name": "strained"
+        }
+    ],
+    "version": 1,
+    "manufacturerName": "Kraft Foods, Inc.",
+    "foodGroup": "Baby Foods",
+    "nutrients": [
+        {
+            "id": 612,
+            "description": "14:0",
+            "nutritionValue": 0.088,
+            "units": "g"
+        },
+        {
+            "id": 629,
+            "description": "20:5 n-3 (EPA)",
+            "nutritionValue": 0,
+            "units": "g"
+        }
+    ],
+    "servings": [
+        {
+            "amount": 1,
+            "description": "oz",
+            "weightInGrams": 8.35
+        },
+        {
+            "amount": 1,
+            "description": "jar",
+            "weightInGrams": 13.9
+        }
+    ],
+    "_rid": "hxoIAP3QYIkDAAAAAAAAAA==",
+    "_self": "dbs/hxoIAA==/colls/hxoIAP3QYIk=/docs/hxoIAP3QYIkDAAAAAAAAAA==",
+    "_etag": "32a117ad-0844-4a0d-9973-592a77d09a6b",
+    "_attachments": "attachments/",
+    "_ts": 1636444311
+}
