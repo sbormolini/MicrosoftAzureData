@@ -1,0 +1,1 @@
+SELECT * FROM c WHERE c.foodGroup = "Baby Foods" AND c._ts >= @HighWaterMark ORDER BY c._ts
