@@ -1,0 +1,8 @@
+Shelves
+//| where shelf == 3193
+| mv-expand rf_ids
+| extend rf_ids = tostring(rf_ids) 
+| join kind=inner  Books on $left.rf_ids == $right.rf_id
+| summarize calculated_total=sum(weight_gram) by shelf, total_weight
+| project shelf, diff=(calculated_total - total_weight)
+| sort by diff

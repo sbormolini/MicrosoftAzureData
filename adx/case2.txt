@@ -1,0 +1,8 @@
+Votes
+| where vote == 'Poppy'
+| summarize VoteCount=count() by via_ip, bin(Timestamp,1m)
+| order by Timestamp
+| summarize VoteCount=make_list(VoteCount),Timestamp=make_list(Timestamp) by via_ip
+| extend outliers=series_decompose_anomalies(VoteCount, 1.5, -1)
+//| mv-expand Timestamp, VoteCount, outliers
+//| where outliers == 1
