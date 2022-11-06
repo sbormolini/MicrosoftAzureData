@@ -1,0 +1,39 @@
+PrimeNumbers
+| sort by Number asc 
+| extend previousNumber = prev(Number)
+| extend SpecialNumber = (Number + previousNumber + 1)
+| where SpecialNumber between (99000000 .. 100000000)
+| project SpecialNumber
+| join kind=inner (PrimeNumbers) on $left.SpecialNumber == $right.Number
+| sort by SpecialNumber desc 
+
+
+let cherries = nyc_trees
+| where spc_latin == "Prunus virginiana"
+| extend H3Cell = geo_point_to_h3cell(longitude, latitude, 10)
+| summarize count() by H3Cell
+| where count_ == 4
+| project H3Cell;
+let hazelnut = nyc_trees
+| where spc_common == "Turkish hazelnut"
+| extend H3Cell = geo_point_to_h3cell(longitude, latitude, 10)
+| summarize count() by H3Cell
+| where count_ == 1
+| project H3Cell;
+let match = cherries
+| join kind=inner (hazelnut) on H3Cell 
+| project H3Cell;
+nyc_trees
+| where spc_common == "American linden"
+| extend H3Cell = geo_point_to_h3cell(longitude, latitude, 10)
+| join kind=inner (match) on H3Cell 
+| sort by tree_dbh asc
+| limit 1
+
+
+VirtualTourLink(40.71222313, -73.96452201)
+
+
+let message = @'20INznpGzmkmK2NlZ0JILtO4OoYhOoYUB0OrOoTl5mJ3KgXrB0[8LTSSXUYhzUY8vmkyKUYevUYrDgYNK07yaf7soC3kKgMlOtHkLt[kZEclBtkyOoYwvtJGK2YevUY[v65iLtkeLEOhvtNlBtpizoY[v65yLdOkLEOhvtNlDn5lB07lOtJIDmllzmJ4vf7soCpiLdYIK0[eK27soleqO6keDpYp2CeH5d\F\fN6aQT6aQL[aQcUaQc[aQ57aQ5[aQDG';
+let key = 'ASHES to ASHES';
+print Message=Decrypt(message, key)
