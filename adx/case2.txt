@@ -1,3 +1,4 @@
+// Test with series_decompose_anomalies
 Votes
 | where vote == 'Poppy'
 | summarize VoteCount=count() by via_ip, bin(Timestamp,1m)
@@ -6,3 +7,22 @@ Votes
 | extend outliers=series_decompose_anomalies(VoteCount, 1.5, -1)
 //| mv-expand Timestamp, VoteCount, outliers
 //| where outliers == 1
+
+// Query that counts the votes:
+Votes
+| summarize Count=count() by vote
+| as hint.materialized=true T
+| extend Total = toscalar(T | summarize sum(Count))
+| project vote, Percentage = round(Count*100.0 / Total, 1), Count
+| order by Count
+
+let TempVotes =  Votes
+| where vote == "Poppy"
+| distinct datetime_part("hour",Timestamp), datetime_part("minute",Timestamp), via_ip
+| union (Votes | where vote !="Poppy");
+TempVotes
+| summarize Count=count() by vote
+| as hint.materialized=true T
+| extend Total = toscalar(T | summarize sum(Count))
+| project vote, Percentage = round(Count*100.0 / Total, 1), Count
+| order by Count
